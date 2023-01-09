@@ -15,26 +15,30 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const MyHomePage(title: 'Contents'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-  final int pages = 2;
+  const MyHomePage({super.key, required this.title});
+  final String title;
+  final int pages = 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
         body: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Flexible(
-          flex: 1,
-          child: _buildPageList(),
-        )
-      ],
-    ));
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 1,
+              child: _buildPageList(),
+            )
+          ],
+        ));
   }
 
   Widget _buildPageList() {
@@ -42,17 +46,17 @@ class MyHomePage extends StatelessWidget {
         itemCount: pages,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text("page" + index.toString()),
+            title: Text("page $index"),
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => BookPage(
                             pageNum: index,
+                            pages: pages,
                           )));
             },
           );
-          return Text("page" + index.toString());
         });
   }
 }
