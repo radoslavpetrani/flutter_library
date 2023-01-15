@@ -55,8 +55,7 @@ class BookPage extends StatelessWidget {
                             if (pageNum! == 0) {
                               Navigator.pop(context);
                             } else {
-                              Navigator.pop(context);
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => BookPage(
@@ -74,8 +73,7 @@ class BookPage extends StatelessWidget {
                           child: const Text('next page'),
                           onPressed: () {
                             if (pageNum! < pages - 1) {
-                              Navigator.pop(context);
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => BookPage(

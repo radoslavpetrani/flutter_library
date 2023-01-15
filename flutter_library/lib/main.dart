@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_library/Page.dart';
+import 'package:flutter_library/book.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,15 +15,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Contents'),
+      home: MyHomePage(title: 'Contents'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title});
   final String title;
-  final int pages = 4;
+  final List<String> bookNames = ["Book 1", "Book 2", "Book 3"];
+  final List<String> authors = ["Author", "Author", "Author"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,27 +36,32 @@ class MyHomePage extends StatelessWidget {
           children: [
             Flexible(
               flex: 1,
-              child: _buildPageList(),
+              child: _buildBookList(),
             )
           ],
         ));
   }
 
-  Widget _buildPageList() {
+  Widget _buildBookList() {
     return ListView.builder(
-        itemCount: pages,
+        padding: const EdgeInsets.all(10),
+        itemCount: bookNames.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text("page $index"),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => BookPage(
-                            pageNum: index,
-                            pages: pages,
-                          )));
-            },
+          return Center(
+            child: ListTile(
+              leading: const Icon(Icons.menu_book),
+              title: Text(bookNames.elementAt(index)),
+              subtitle: Text(authors.elementAt(index)),
+              trailing: const Icon(Icons.more_vert),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Book(
+                              title: bookNames.elementAt(index),
+                            )));
+              },
+            ),
           );
         });
   }
