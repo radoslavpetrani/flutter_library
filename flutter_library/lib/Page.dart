@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BookPage extends StatelessWidget {
+  const BookPage({super.key, this.pageNum, required this.pages});
   final int? pageNum;
   final int pages;
-  const BookPage({super.key, this.pageNum, required this.pages});
 
   @override
   Widget build(BuildContext context) {
@@ -11,82 +11,76 @@ class BookPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("page $pageNum"),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const Expanded(
+      body: ListView(
+        children: [
+          Row(children: const [
+            Flexible(
               flex: 1,
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 padding: EdgeInsets.all(32),
                 child: Text(
-                  'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-                  'Alps. Situated 1,578 meters above sea level, it is one of the '
-                  'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-                  'half-hour walk through pastures and pine forest, leads you to the '
-                  'lake, which warms to 20 degrees Celsius in the summer. Activities '
-                  'enjoyed here include rowing, and riding the summer toboggan run.'
-                  'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-                  'Alps. Situated 1,578 meters above sea level, it is one of the '
-                  'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-                  'half-hour walk through pastures and pine forest, leads you to the '
-                  'lake, which warms to 20 degrees Celsius in the summer. Activities '
-                  'enjoyed here include rowing, and riding the summer toboggan run.'
-                  'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-                  'Alps. Situated 1,578 meters above sea level, it is one of the '
-                  'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-                  'half-hour walk through pastures and pine forest, leads you to the '
-                  'lake, which warms to 20 degrees Celsius in the summer. Activities '
-                  'enjoyed here include rowing, and riding the summer toboggan run.',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis nisl faucibus rhoncus'
+                  'iaculis. Maecenas imperdiet semper ante a malesuada. In a est massa. Morbi finibus metus neque.'
+                  'Donec tristique odio orci, vitae accumsan magna accumsan in. Cras vitae enim blandit, pulvinar'
+                  'diam sit amet, ultricies dolor. Sed accumsan mi felis, non rhoncus quam efficitur a.'
+                  'Aenean ac pulvinar velit. Morbi pretium ante eget urna vulputate, vitae mollis sem maximus.'
+                  ' Integer quis purus ut mauris commodo ornare non sed libero. Donec tempor in nulla at sollicitudin.'
+                  ' Donec laoreet eget dolor condimentum venenatis. In ornare orci scelerisque, molestie orci ut,'
+                  ' convallis ante. Vestibulum pharetra elit nisi.'
+                  'Cras vehicula, ipsum et ultrices vehicula, justo justo condimentum quam, non malesuada nisl mauris'
+                  ' ac nunc. Aenean rutrum augue feugiat, convallis augue rutrum, posuere urna.'
+                  ' Vestibulum lacinia rutrum rhoncus. Suspendisse et mauris erat. Cras consectetur tincidunt quam'
+                  ' at malesuada. Suspendisse bibendum dolor erat, ac faucibus nisl maximus at.'
+                  ' Nunc eu diam eget eros scelerisque blandit. '
+                  'Phasellus a tincidunt turpis, nec ultrices orci. Aliquam sit amet odio in purus varius dignissim.'
+                  ' Cras non urna ac arcu lacinia pulvinar sagittis nec erat. Aliquam velit dui, commodo nec iaculis a,'
+                  ' sagittis eu eros. Nulla facilisi. Ut urna orci, dignissim in tempus id, posuere eleifend arcu.',
                   softWrap: true,
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Flexible(
-                        flex: 1,
-                        child: ElevatedButton(
-                          child: const Text('previous page'),
-                          onPressed: () {
-                            if (pageNum! == 0) {
-                              Navigator.pop(context);
-                            } else {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BookPage(
-                                            pageNum: pageNum! - 1,
-                                            pages: pages,
-                                          )));
-                            }
-                          },
-                        ))),
-                Container(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Flexible(
-                        flex: 1,
-                        child: ElevatedButton(
-                          child: const Text('next page'),
-                          onPressed: () {
-                            if (pageNum! < pages - 1) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BookPage(
-                                            pageNum: pageNum! + 1,
-                                            pages: pages,
-                                          )));
-                            }
-                          },
-                        )))
-              ],
-            )
-          ],
-        ),
+          ]),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                  flex: 1,
+                  child: ElevatedButton(
+                    child: const Text('previous page'),
+                    onPressed: () {
+                      if (pageNum! == 0) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BookPage(
+                                      pageNum: pageNum! - 1,
+                                      pages: pages,
+                                    )));
+                      }
+                    },
+                  )),
+              Flexible(
+                  flex: 1,
+                  child: ElevatedButton(
+                    child: const Text('next page'),
+                    onPressed: () {
+                      if (pageNum! < pages - 1) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BookPage(
+                                      pageNum: pageNum! + 1,
+                                      pages: pages,
+                                    )));
+                      }
+                    },
+                  ))
+            ],
+          )
+        ],
       ),
     );
   }
