@@ -20,7 +20,8 @@ class ChapterView extends StatelessWidget {
     return PageView.builder(
         itemCount: sections.length,
         itemBuilder: (context, index) {
-          return Container(
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
             child: Center(
               child: Text(sections.elementAt(index).content),
             ),

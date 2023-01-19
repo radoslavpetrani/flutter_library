@@ -1,0 +1,135 @@
+{
+    "items":[
+        {
+            "title": "Book 1",
+            "author": "Author 1",
+            "ISBN":  "987-2-13-287213-0",
+            "length": 2,
+            "contents": [
+                {
+                    "subtitle": "subtitle 1",
+                    "bookDescription":"description of this part",
+                    "chapters": [
+                        {
+                            "title":"chapter 1.1",
+                            "sections":[
+                                {
+                                    "title":"section 1",
+                                    "subtitle":"subtitle",
+                                    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis nisl faucibus rhoncus iaculis. Maecenas imperdiet semper ante a malesuada. In a est massa. Morbi finibus metus neque. Donec tristique odio orci, vitae accumsan magna accumsan in. Cras vitae enim blandit, pulvinar diam sit amet, ultricies dolor. Sed accumsan mi felis, non rhoncus quam efficitur a.",
+                                    "notes":"notes"
+                                },
+                                {
+                                    "title":"section 2",
+                                    "subtitle":"subtitle",
+                                    "content": "Aenean ac pulvinar velit. Morbi pretium ante eget urna vulputate, vitae mollis sem maximus.",
+                                    "notes":"notes"
+                                }
+                            ]
+                        }, 
+                        {
+                            "title":"chapter 1.2",
+                            "sections":[
+                                {
+                                    "title":"section 1",
+                                    "subtitle":"subtitle",
+                                    "content":"Integer quis purus ut mauris commodo ornare non sed libero. Donec tempor in nulla at sollicitudin.",
+                                    "notes":"notes"
+                                },
+                                {
+                                    "title":"section 2",
+                                    "subtitle":"subtitle",
+                                    "content": "Donec laoreet eget dolor condimentum venenatis. In ornare orci scelerisque, molestie orci ut,",
+                                    "notes":"notes"
+                                }
+                            ]
+                        }, 
+                        {
+                            "title":"chapter 1.3",
+                            "sections":[
+                                {
+                                    "title":"section 1",
+                                    "subtitle":"subtitle",
+                                    "content":"convallis ante. Vestibulum pharetra elit nisi. Cras vehicula, ipsum et ultrices vehicula, justo justo condimentum quam, non malesuada nisl mauris",
+                                    "notes":"notes"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "subtitle 2",
+                    "bookDescription":"description of this part",
+                    "chapters":[
+                        {
+                            "title":"chapter 2.1",
+                            "sections":[
+                                {
+                                    "title":"section 1",
+                                    "subtitle":"subtitle",
+                                    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis nisl faucibus rhoncus iaculis. Maecenas imperdiet semper ante a malesuada. In a est massa. Morbi finibus metus neque. Donec tristique odio orci, vitae accumsan magna accumsan in. Cras vitae enim blandit, pulvinar diam sit amet, ultricies dolor. Sed accumsan mi felis, non rhoncus quam efficitur a.",
+                                    "notes":"notes"
+                                },
+                                {
+                                    "title":"section 2",
+                                    "subtitle":"subtitle",
+                                    "content": "Aenean ac pulvinar velit. Morbi pretium ante eget urna vulputate, vitae mollis sem maximus.",
+                                    "notes":"notes"
+                                }
+                            ]
+                        }, 
+                        {
+                            "title":"chapter 2.2",
+                            "sections":[
+                                {
+                                    "title":"section 1",
+                                    "subtitle":"subtitle",
+                                    "content":"Integer quis purus ut mauris commodo ornare non sed libero. Donec tempor in nulla at sollicitudin.",
+                                    "notes":"notes"
+                                },
+                                {
+                                    "title":"section 2",
+                                    "subtitle":"subtitle",
+                                    "content": "Donec laoreet eget dolor condimentum venenatis. In ornare orci scelerisque, molestie orci ut,",
+                                    "notes":"notes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Book 2",
+            "author": "Author 2",
+            "ISBN":  "987-1-45-319808-1",
+            "length": 1,
+            "contents": [
+                {
+                    "subtitle": "subtitle 3",
+                    "bookDescription":"description of this part",
+                    "chapters": [
+                        {
+                            "title":"chapter 1.1",
+                            "sections":[
+                                {
+                                    "title":"section 1",
+                                    "subtitle":"subtitle",
+                                    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis nisl faucibus rhoncus iaculis. Maecenas imperdiet semper ante a malesuada. In a est massa. Morbi finibus metus neque. Donec tristique odio orci, vitae accumsan magna accumsan in. Cras vitae enim blandit, pulvinar diam sit amet, ultricies dolor. Sed accumsan mi felis, non rhoncus quam efficitur a.",
+                                    "notes":"notes"
+                                },
+                                {
+                                    "title":"section 2",
+                                    "subtitle":"subtitle",
+                                    "content": "Aenean ac pulvinar velit. Morbi pretium ante eget urna vulputate, vitae mollis sem maximus.",
+                                    "notes":"notes"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+}
