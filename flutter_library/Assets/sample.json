@@ -3,7 +3,7 @@
         {
             "title": "Book 1",
             "author": "Author 1",
-            "ISBN":  "987-2-13-287213-0",
+            "isbn":  "987-2-13-287213-0",
             "length": 2,
             "contents": [
                 {
@@ -102,7 +102,7 @@
         {
             "title": "Book 2",
             "author": "Author 2",
-            "ISBN":  "987-1-45-319808-1",
+            "isbn":  "987-1-45-319808-1",
             "length": 1,
             "contents": [
                 {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_library/Objects/sections.dart';
+import 'package:flutter_library/models/sections.dart';
 
 class ChapterView extends StatelessWidget {
   const ChapterView({super.key, required this.title, required this.sections});
