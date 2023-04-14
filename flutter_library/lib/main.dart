@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_library/book_view.dart';
 
-import 'Objects/book.dart';
+import 'models/book.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key, required this.title});
-  List items = [];
+  List<dynamic> items = [];
   final List<Book> books = [];
   final String title;
 
@@ -70,21 +70,22 @@ class MyHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         itemCount: books.length,
         itemBuilder: (context, index) {
+          Book currentBook = books.elementAt(index);
           return Center(
             child: ListTile(
               leading: const Icon(Icons.menu_book),
-              title: Text(books.elementAt(index).title),
-              subtitle: Text(books.elementAt(index).author),
+              title: Text(currentBook.title),
+              subtitle: Text(currentBook.author),
               trailing: const Icon(Icons.more_vert),
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => BookView(
-                              title: books.elementAt(index).title,
-                              length: books.elementAt(index).length,
-                              isbn: books.elementAt(index).isbn,
-                              contents: books.elementAt(index).contents,
+                              title: currentBook.title,
+                              length: currentBook.length,
+                              isbn: currentBook.isbn,
+                              contents: currentBook.contents,
                             )));
               },
             ),
