@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_library/Objects/content.dart';
+import 'package:flutter_library/models/content.dart';
 import 'package:flutter_library/content_view.dart';
 
 class BookView extends StatelessWidget {
