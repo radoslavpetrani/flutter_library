@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_library/api.dart';
 import 'package:flutter_library/book_view.dart';
 
 import 'models/book.dart';
@@ -30,12 +31,10 @@ class MyHomePage extends StatelessWidget {
   List<dynamic> items = [];
   final List<Book> books = [];
   final String title;
+  final Api api = Api();
 
   Future<void> readJson() async {
-    final String response = await rootBundle.loadString('assets/sample.json');
-    final data = await jsonDecode(response);
-    items = data["items"];
-
+    items = await api.getBooks() ?? [];
     for (var element in items) {
       books.add(Book.fromJson(element));
     }
