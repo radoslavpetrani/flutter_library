@@ -1,4 +1,3 @@
-import 'package:flutter_library/models/content.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'book.g.dart';
@@ -16,7 +15,7 @@ class Book {
   final String author;
   final String isbn;
   final int length;
-  final List<Content> contents;
+  final String contents;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
   Map<String, dynamic> toJson() => _$BookToJson(this);

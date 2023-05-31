@@ -1,51 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_library/api.dart';
 import 'package:flutter_library/models/content.dart';
 import 'package:flutter_library/content_view.dart';
 
 class BookView extends StatelessWidget {
-  const BookView(
+  BookView(
       {super.key,
       required this.title,
       required this.length,
-      required this.isbn,
-      required this.contents});
+      required this.contents,
+      required this.api});
   final String title;
   final int length;
-  final String isbn;
-  final List<Content> contents;
+  final String contents;
+  final Api api;
+  final List<Content> contentList = [];
+
+  Future<void> readJsonBook() async {
+    final items = await api.getBook(contents) ?? [];
+    for (var element in items) {
+      contentList.add(Content.fromJson(element));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Flexible(
-              flex: 1,
-              child: _buildContentList(),
-            )
-          ],
-        ));
+    return FutureBuilder(
+        future: readJsonBook(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text("error");
+          }
+          return Scaffold(
+              appBar: AppBar(
+                title: Text(title),
+              ),
+              body: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: _buildContentList(),
+                  )
+                ],
+              ));
+        });
   }
 
   Widget _buildContentList() {
     return ListView.builder(
-        itemCount: length,
+        itemCount: contentList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(contents.elementAt(index).subtitle),
+            title: Text(contentList.elementAt(index).subtitle),
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => ContentView(
-                            subtitle: contents.elementAt(index).subtitle,
+                            subtitle: contentList.elementAt(index).subtitle,
                             bookDescription:
-                                contents.elementAt(index).bookDescription,
-                            chapters: contents.elementAt(index).chapters,
+                                contentList.elementAt(index).bookDescription,
+                            chapters: contentList.elementAt(index).chapters,
                           )));
             },
           );

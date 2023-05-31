@@ -17,5 +17,5 @@ Content _$ContentFromJson(Map<String, dynamic> json) => Content(
 Map<String, dynamic> _$ContentToJson(Content instance) => <String, dynamic>{
       'subtitle': instance.subtitle,
       'bookDescription': instance.bookDescription,
-      'chapters': instance.chapters,
+      'chapters': instance.chapters.map((e) => e.toJson()).toList(),
     };
