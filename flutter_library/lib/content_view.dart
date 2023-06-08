@@ -37,13 +37,20 @@ class ContentView extends StatelessWidget {
           return ListTile(
             title: Text(chapters.elementAt(index).title),
             onTap: () {
+              Navigator.of(context).pushNamed('/book/content/chapter',
+                  arguments: [
+                    chapters.elementAt(index).title,
+                    chapters.elementAt(index).sections
+                  ]);
+
+              /*
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => ChapterView(
                             title: chapters.elementAt(index).title,
                             sections: chapters.elementAt(index).sections,
-                          )));
+                          )));*/
             },
           );
         });

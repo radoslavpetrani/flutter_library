@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_library/api.dart';
 import 'package:flutter_library/book_view.dart';
-
+import 'package:flutter_library/router.dart';
 import 'models/book.dart';
 
 void main() {
@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Book selection'),
+      onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: '/',
     );
   }
 }
@@ -73,6 +75,13 @@ class MyHomePage extends StatelessWidget {
               subtitle: Text(currentBook.author),
               trailing: const Icon(Icons.more_vert),
               onTap: () {
+                Navigator.of(context).pushNamed('/book', arguments: [
+                  currentBook.title,
+                  currentBook.length,
+                  currentBook.contents,
+                  api
+                ]);
+                /*
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -81,7 +90,7 @@ class MyHomePage extends StatelessWidget {
                               length: currentBook.length,
                               contents: currentBook.contents,
                               api: api,
-                            )));
+                            )));*/
               },
             ),
           );

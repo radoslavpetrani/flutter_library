@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/api.dart';
 import 'package:flutter_library/models/content.dart';
 import 'package:flutter_library/content_view.dart';
+import 'package:go_router/go_router.dart';
 
 class BookView extends StatelessWidget {
   BookView(
@@ -54,6 +55,12 @@ class BookView extends StatelessWidget {
           return ListTile(
             title: Text(contentList.elementAt(index).subtitle),
             onTap: () {
+              Navigator.of(context).pushNamed('/book/content', arguments: [
+                contentList.elementAt(index).subtitle,
+                contentList.elementAt(index).bookDescription,
+                contentList.elementAt(index).chapters,
+              ]);
+/*
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -62,7 +69,7 @@ class BookView extends StatelessWidget {
                             bookDescription:
                                 contentList.elementAt(index).bookDescription,
                             chapters: contentList.elementAt(index).chapters,
-                          )));
+                          )));*/
             },
           );
         });
