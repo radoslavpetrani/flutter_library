@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_library/api.dart';
-import 'package:flutter_library/book_view.dart';
+import 'package:flutter_library/dao.dart';
 import 'package:flutter_library/router.dart';
 import 'models/book.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
   runApp(const MyApp());
 }
 
@@ -25,17 +27,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   MyHomePage({super.key, required this.title});
-  final List<Book> books = [];
+
   final String title;
-  final Api api = Api();
+  final Dao dao = Dao();
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Book> books = [];
 
   Future<void> readJson() async {
-    List<dynamic> items = await api.getBooks() ?? [];
-    for (var element in items) {
-      books.add(Book.fromJson(element));
-    }
+    await widget.dao.getBooks(books);
   }
 
   @override
@@ -47,18 +53,24 @@ class MyHomePage extends StatelessWidget {
             return const Text("error");
           }
           return Scaffold(
-              appBar: AppBar(
-                title: Text(title),
-              ),
-              body: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: _buildBookList(),
-                  )
-                ],
-              ));
+            appBar: AppBar(
+              title: Text(widget.title),
+            ),
+            body: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: _buildBookList(),
+                )
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: _refreshBookList,
+              tooltip: 'refresh',
+              child: const Icon(Icons.cached),
+            ),
+          );
         });
   }
 
@@ -75,25 +87,17 @@ class MyHomePage extends StatelessWidget {
               subtitle: Text(currentBook.author),
               trailing: const Icon(Icons.more_vert),
               onTap: () {
-                Navigator.of(context).pushNamed('/book', arguments: [
-                  currentBook.title,
-                  currentBook.length,
-                  currentBook.contents,
-                  api
-                ]);
-                /*
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BookView(
-                              title: currentBook.title,
-                              length: currentBook.length,
-                              contents: currentBook.contents,
-                              api: api,
-                            )));*/
+                Navigator.of(context).pushNamed('/book',
+                    arguments: {'book': currentBook, 'dao': widget.dao});
               },
             ),
           );
         });
+  }
+
+  void _refreshBookList() {
+    setState(() {
+      widget.dao.refresh(books);
+    });
   }
 }

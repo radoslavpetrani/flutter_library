@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'models/chapter.dart';
-import 'chapter_view.dart';
 
 class ContentView extends StatelessWidget {
   const ContentView(
@@ -38,19 +36,7 @@ class ContentView extends StatelessWidget {
             title: Text(chapters.elementAt(index).title),
             onTap: () {
               Navigator.of(context).pushNamed('/book/content/chapter',
-                  arguments: [
-                    chapters.elementAt(index).title,
-                    chapters.elementAt(index).sections
-                  ]);
-
-              /*
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ChapterView(
-                            title: chapters.elementAt(index).title,
-                            sections: chapters.elementAt(index).sections,
-                          )));*/
+                  arguments: chapters.elementAt(index));
             },
           );
         });
