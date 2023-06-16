@@ -20,6 +20,7 @@ class RouteGenerator {
                   title: book.title,
                   length: book.length,
                   contents: book.contents,
+                  isbn: book.isbn,
                   dao: dao,
                 ));
       case '/book/content':

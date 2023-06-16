@@ -8,7 +8,9 @@ class BookView extends StatelessWidget {
       required this.title,
       required this.length,
       required this.contents,
+      required this.isbn,
       required this.dao});
+  final String isbn;
   final String title;
   final int length;
   final String contents;

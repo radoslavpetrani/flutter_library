@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter_library/models/book.dart';
+import 'package:flutter_library/models/chapter.dart';
 import 'package:flutter_library/models/content.dart';
+import 'package:flutter_library/models/sections.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/utils/utils.dart';
@@ -72,26 +74,4 @@ class DatabaseClass {
     }
     return false;
   }
-
-  /*
-  Future<void> createContentsTable(String isbn) async {
-    final db = await _getDB();
-    await db.execute(
-        'CREATE TABLE $isbn(subtitle TEXT, bookDescription TEXT, chapters TEXT)');
-  }
-
-  Future<void> insertContent(String isbn, Content content) async {
-    final db = await _getDB();
-    String subtitle = content.subtitle;
-    String description = content.bookDescription;
-    List<String> chapterList = [];
-    for (var c in content.chapters) {
-      chapterList.add(c.toJson().toString());
-    }
-    String chapters = chapterList.toString();
-
-    await db.rawInsert(
-        'INSERT INTO $isbn(subtitle, bookDescription, chapters) VALUES($subtitle, $description, $chapters)');
-  }
-  */
 }
